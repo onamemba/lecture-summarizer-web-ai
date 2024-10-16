@@ -1,0 +1,20 @@
+.caption-bar {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 150px; /* Fixed height */
+  overflow-y: scroll; /* Enable scrolling for overflow */
+}
+
+.caption-bar h3 {
+  color: #3f51b5;
+  margin-bottom: 10px;
+}
+
+.caption-bar p {
+  font-size: 1em;
+  color: #333;
+  white-space: pre-wrap; /* Preserve spaces and line breaks */
+}

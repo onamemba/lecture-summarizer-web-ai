@@ -1,0 +1,32 @@
+.controls {
+    margin-bottom: 20px;
+  }
+  
+  .material-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3f51b5;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .material-button .material-icons {
+    margin-right: 8px;
+  }
+  
+  .material-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .material-button:hover:not(:disabled) {
+    background-color: #303f9f;
+  }
+  

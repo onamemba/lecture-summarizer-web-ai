@@ -1,0 +1,111 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #3f51b5;
+}
+
+.controls, .control-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.material-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3f51b5;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.material-button .material-icons {
+  margin-right: 8px;
+}
+
+.material-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.material-button:hover:not(:disabled) {
+  background-color: #303f9f;
+}
+
+.waveform {
+  margin: 20px 0;
+  height: 100px;
+}
+
+.caption-bar {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.caption-bar h3 {
+  color: #3f51b5;
+  margin-bottom: 10px;
+}
+
+.caption-bar p {
+  font-size: 1em;
+  color: #333;
+}
+
+.caption-bar {
+  height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+}
+
+.controls, .control-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.waveform, .caption-bar, .summary-bar {
+  width: 80%;
+  max-width: 600px;
+  margin-top: 10px;
+}
