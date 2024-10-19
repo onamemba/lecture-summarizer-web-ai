@@ -5,9 +5,9 @@ import MicIcon from '@mui/icons-material/Mic';
 import StopIcon from '@mui/icons-material/Stop';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SaveIcon from '@mui/icons-material/Save';
+import AudioMotionAnalyzer from 'audiomotion-analyzer'; // Import AudioMotionAnalyzer
 import '@mui/material/styles'; // Ensure Material UI styling is imported
 import './App.css'; // Custom CSS for your layout
-
 
 function App() {
   const [isRecording, setIsRecording] = useState(false);
@@ -18,6 +18,8 @@ function App() {
   const mediaRecorder = useRef(null);
   const audioChunks = useRef([]);
   const recognitionRef = useRef(null);
+  const audioMotionAnalyzerRef = useRef(null); // Create a ref for AudioMotionAnalyzer
+  const audioContextRef = useRef(null); // Create a ref for AudioContext
 
   useEffect(() => {
     if (!waveformRef.current) {
@@ -66,15 +68,53 @@ function App() {
         setTranscription((prev) => prev + ' ' + transcript);
       }
     };
-    
 
     recognitionRef.current.start();
+
+    // Initialize AudioContext
+    if (!audioContextRef.current) {
+      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    // Create a MediaStreamAudioSourceNode from the microphone stream
+    const source = audioContextRef.current.createMediaStreamSource(stream);
+
+    // Initialize AudioMotionAnalyzer with the source node
+    audioMotionAnalyzerRef.current = new AudioMotionAnalyzer(document.getElementById('visualizer'), {
+      source: source,
+      height: 400,
+      ansiBands: false,
+      showScaleX: false,
+      bgAlpha: 0,
+      overlay: true,
+      smoothing: 0.7,
+      mode: 0,
+      channelLayout: "single",
+      frequencyScale: "bark",
+      gradient: "prism",
+      linearAmplitude: true,
+      linearBoost: 1.8,
+      mirror: 0,
+      radial: false,
+      reflexAlpha: 0.25,
+      reflexBright: 1,
+      reflexFit: true,
+      reflexRatio: 0.3,
+      showPeaks: true,
+      weightingFilter: "D"
+    });
   };
 
   const stopRecording = () => {
     setIsRecording(false);
     mediaRecorder.current.stop();
     recognitionRef.current.stop();
+    
+    // Stop the audio context
+    if (audioContextRef.current) {
+      audioContextRef.current.close();
+      audioContextRef.current = null; // Reset the AudioContext for next recording
+    }
   };
 
   const playAudio = () => {
@@ -122,6 +162,10 @@ function App() {
           <StopIcon /> Stop Recording
         </button>
       </div>
+
+      {/* AudioMotion Visualizer */}
+      <div id="visualizer" style={{ margin: '1rem 0', height: '300px' }}></div>
+
       <div id="waveform" className="waveform"></div>
       <div className="control-buttons">
         <button className="material-button" onClick={playAudio} disabled={!audioURL}>
