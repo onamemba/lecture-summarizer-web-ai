@@ -1,20 +1,118 @@
-.caption-bar {
-  margin-top: 20px;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 400px; /* Fixed width */
+  height: auto; /* Flexible height to accommodate content */
+  max-height: 90vh; /* Prevent it from taking more than 90% of screen height */
+  overflow: hidden; /* Hide overflow */
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #3f51b5;
+}
+
+.controls,
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.material-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3f51b5;
+  color: #fff;
+  font-size: 0.9em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.material-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.material-button:hover:not(:disabled) {
+  background-color: #303f9f;
+}
+
+.visualizer-waveform-container {
+  width: 100%;
+  height: 150px; /* Set a fixed height */
+  display: flex; /* Use flexbox to align items */
+  flex-direction: column; /* Stack them vertically */
+  margin-bottom: 20px; /* Add space below */
+  position: relative; /* Position relative for absolute positioning of children if needed */
+  overflow: hidden; /* Hide overflow if necessary */
+}
+
+.visualizer {
+  flex: 1; /* Allow the visualizer to take available space */
+  background-color: #f9f9f9; /* Optional background color */
+}
+
+.waveform {
+  height: 60px; /* Fixed height for waveform */
+  background-color: #e0e0e0; /* Optional background color */
+}
+/* Hide elements while keeping their space */
+.hidden {
+  visibility: hidden;
+}
+
+.summary-bar ul {
+  list-style-type: disc; /* Use bullet points */
+  padding-left: 20px; /* Indent the list */
+}
+
+.summary-bar li {
+  margin-bottom: 5px; /* Add some spacing between list items */
+}
+
+.caption-bar,
+.summary-bar {
+  margin-top: 10px;
   padding: 10px;
   background-color: #f4f4f4;
   border-radius: 5px;
   border: 1px solid #ccc;
-  height: 150px; /* Fixed height */
-  overflow-y: scroll; /* Enable scrolling for overflow */
+  height: 100px;
+  overflow-y: auto;
 }
 
-.caption-bar h3 {
+.caption-bar h3,
+.summary-bar h3 {
   color: #3f51b5;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  font-size: 1.1em;
 }
 
-.caption-bar p {
-  font-size: 1em;
-  color: #333;
-  white-space: pre-wrap; /* Preserve spaces and line breaks */
+@media (max-width: 500px) {
+  .container {
+    width: 100%;
+    padding: 15px;
+  }
 }
