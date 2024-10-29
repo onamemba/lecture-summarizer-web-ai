@@ -227,7 +227,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Lee Summary</h1>
+      <h1>Lecture Summarizer</h1>
       <div className="controls">
         <button className="material-button" onClick={startRecording} disabled={isRecording}>
           <MicIcon /> Start Recording
