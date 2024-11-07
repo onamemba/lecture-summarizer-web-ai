@@ -227,7 +227,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Lecture Summarizer</h1>
+      <h1>Rec·ol·lect</h1>
       <div className="controls">
         <button className="material-button" onClick={startRecording} disabled={isRecording}>
           <MicIcon /> Start Recording
@@ -254,7 +254,7 @@ function App() {
         </button>
       </div>
       <div className="caption-bar">
-        <h3>Live Transcription:</h3>
+        <h3>Captions:</h3>
         <p>{transcription}</p>
       </div>
       <div className="summary-bar">
